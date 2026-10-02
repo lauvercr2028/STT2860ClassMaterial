@@ -53,6 +53,9 @@ Create short notes while you work. You’ll fill these in at the end.
 
 * **One thing I learned today:**
 * **One thing that confused me at first but makes sense now:**
+
+  - My NFL barplot was outputting the wrong color despite the color showing correctly in the code, but I realized I placed the color arguement in aes() and not geom_bar(). 
+
 * **One ggplot trick I want to remember:**
 
 ---
@@ -125,7 +128,7 @@ NFL <- read_csv("https://aokine.github.io/Data/NFLplayers2016.csv")
 ## Explore the structure with `skim()`
 
 ```{r nfl-skim}
-# Use skim()
+skim(NFL)
 ```
 
 ---
@@ -139,18 +142,16 @@ For `geom_bar()`, we input an `x` variable and the geometry counts how many of e
 Use `x = PositionGrp`.
 
 ```{r bar-1}
-# TODO: Create barplot of PositionGrp
+ggplot(NFL, aes(x = PositionGrp)) + geom_bar()
 ```
 
 ### Choose-your-own mini task (pick ONE)
 
-1. Change bar color and outline (`fill =`, `color =`) **OR**
-2. Flip coordinates (`coord_flip()`) **OR**
-3. Make the bars show proportions instead of counts (hint: `aes(y = after_stat(count/sum(count)))`)
+1. Change bar color and outline (`fill =`, `color =`)
 
-```{r bar-1-choice}
+```{r bar-1-choice} 
 # Do ONE of the three options above. Add your code here.
-
+ggplot(NFL, aes(x = PositionGrp,)) + geom_bar(fill = '#96CDCD', color = 'paleturquoise4')
 ```
 
 ---
@@ -160,7 +161,7 @@ Use `x = PositionGrp`.
 Make `PositionGrp` go on the **y-axis** so labels are easier to read.
 
 ```{r bar-2}
-# TODO: Make horizontal barplot
+ggplot(NFL, aes(y = PositionGrp,)) + geom_bar(fill = '#96CDCD', color = 'paleturquoise4')
 ```
 
 ---
@@ -171,6 +172,7 @@ Use `PositionGrp` and `Side` as the two variables. Use color/fill to separate gr
 
 ```{r bar-3}
 # TODO: Add fill = Side
+ggplot(NFL, aes(y = PositionGrp, fill = Side)) + geom_bar()
 ```
 
 ### Quick interpretation (1–2 sentences)
@@ -178,6 +180,8 @@ Use `PositionGrp` and `Side` as the two variables. Use color/fill to separate gr
 In plain language, what does this plot suggest about how offense/defense/special teams are distributed across position groups?
 
 **Answer:**
+
+* The plot shows us that most position groups are offensive teams. The largest groups are defensive teams though, which are only spread across two groups. 
 
 ---
 

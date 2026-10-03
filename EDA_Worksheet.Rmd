@@ -255,6 +255,8 @@ ggplot(count(NFL, PositionGrp), aes(y = reorder(PositionGrp, -n), x = n)) + geom
 
 ```{r hist-1}
 # TODO: Basic histogram
+ggplot(NFL, aes(x = Weight)) + geom_histogram(binwidth = 10)
+
 ```
 
 ### Histogram with Fill using `PositionGrp` OR `Side`
@@ -263,18 +265,21 @@ Choose ONE: `fill = PositionGrp` or `fill = Side`
 
 ```{r hist-2}
 # TODO: Add fill
+ggplot(NFL, aes(x = Weight, fill = Side)) + geom_histogram(binwidth = 10)
 ```
 
 ### Histogram using `facet_wrap()` with `PositionGrp`
 
 ```{r hist-3}
 # TODO: facet_wrap by PositionGrp
+ggplot(NFL, aes(x = Weight)) + geom_histogram(binwidth = 10) + facet_wrap(~ PositionGrp)
 ```
 
 ### Histogram using `facet_grid()` with `Side`
 
 ```{r hist-4}
 # TODO: facet_grid by Side
+ggplot(NFL, aes(x = Weight)) + geom_histogram(binwidth = 10) + facet_grid(Side ~ .)
 ```
 
 ### Quick interpretation (2–3 sentences)
@@ -282,6 +287,8 @@ Choose ONE: `fill = PositionGrp` or `fill = Side`
 Pick one faceted plot and write what pattern you notice.
 
 **Answer:**
+
+* Weight varies a lot by position group. Offensive linemen are the heaviest and most tightly clustered, centered around 310 lbs, while defensive backs are the lightest, centered around 190 lbs, with a narrow spread. The Front Seven has the widest spread and looks bimodal, with one peak around 230 lbs and another near 300 lbs.
 
 ---
 

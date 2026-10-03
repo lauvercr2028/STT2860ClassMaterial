@@ -201,12 +201,16 @@ For `geom_col()`, we input an `x` variable and we input a `y` variable that spec
 
 ```{r col-1}
 # TODO: Create summarized dataset using count()
+
+count(NFL, PositionGrp)
 ```
 
 ## Plot counts with `geom_col()`
 
 ```{r col-2}
 # TODO: Plot using geom_col()
+
+ggplot(count(NFL, PositionGrp), aes(y = PositionGrp, x = n)) + geom_col() + labs(y = "count")
 ```
 
 ---
@@ -217,6 +221,8 @@ Change the order of the categories according to their counts (largest to smalles
 
 ```{r col-3}
 # TODO: Use reorder() to sort bars
+
+ggplot(count(NFL, PositionGrp), aes(y = reorder(PositionGrp, n), x = n)) + geom_col() + labs(y = "count")
 ```
 
 ### Choose-your-own mini task (pick ONE)
@@ -227,7 +233,8 @@ Change the order of the categories according to their counts (largest to smalles
 
 ```{r col-choice}
 # Do ONE of the three options above. Add your code here.
-
+#2:
+ggplot(count(NFL, PositionGrp), aes(y = reorder(PositionGrp, -n), x = n)) + geom_col() + labs(y = "count")
 ```
 
 ---
